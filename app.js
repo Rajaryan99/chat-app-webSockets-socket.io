@@ -13,7 +13,9 @@ const PORT = 3000;
 
 
 io.on('connection', (client) => {
-    console.log('A new user connected', client.id)
+    client.on('user-message', (message) => {
+        io.emit("message", message)
+    })
 })
 
 
